@@ -23,7 +23,7 @@
         <div class="envelope-clasp heart-shaped"></div>
         <div class="envelope-ribbon shiny"></div>
         <div class="envelope-flap top">
-          <p class="flap-text hidden">Chúc</p>
+          <p class="flap-text hidden chuc">Chúc</p>
         </div>
         <div class="envelope-flap bottom">
           <p class="flap-text hidden nhat">Nhật</p>
@@ -213,6 +213,7 @@
         const backgroundMusic = document.getElementById("backgroundMusic");
 
         let interval; // Khai báo biến interval ở đây để có thể dừng trong hàm khác
+        let isScrolling = false;
 
         envelope.addEventListener("click", function () {
           clasp.style.animation = "unlockClasp 2s forwards";
@@ -230,6 +231,9 @@
 
           // Hàm cuộn tự động bên trong phần tử envelope-content
           function autoScrollEnvelope() {
+            if(isScrolling) return;
+
+            isScrolling = true; // ngăn không cho tự động scrolling lại khi click vào màn hình vì đang nằm trong sự kiện click của envelop
             const scrollSpeed = 1; // Điều chỉnh tốc độ cuộn
             const maxScroll =
               envelopeContent.scrollHeight - envelopeContent.clientHeight;
@@ -240,14 +244,14 @@
               } else {
                 clearInterval(interval); // Dừng cuộn khi đến cuối phần tử
               }
-            }, 30); // Tần số cuộn (16ms ~ 60fps)
+            }, 40); // Tần số cuộn (16ms ~ 60fps)
           }
 
           // Dừng cuộn khi có hành động click hoặc chạm vào màn hình
           function stopScroll() {
             clearInterval(interval);
-            window.removeEventListener("click", stopScroll); // Loại bỏ sự kiện sau khi dừng
-            window.removeEventListener("touchstart", stopScroll); // Đối với thiết bị cảm ứng
+             window.removeEventListener("click", stopScroll); // Loại bỏ sự kiện sau khi dừng
+             window.removeEventListener("touchstart", stopScroll); // Đối với thiết bị cảm ứng
           }
 
           // Lắng nghe sự kiện click và chạm để dừng cuộn
@@ -274,7 +278,7 @@
             clasp.classList.add("hidden");
             // Gọi hàm cuộn tự động khi phần tử được tải
             autoScrollEnvelope();
-          }, 7700);
+          }, 10000);
         });
 
         giftBox.addEventListener("click", function (event) {
