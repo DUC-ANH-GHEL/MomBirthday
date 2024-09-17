@@ -140,7 +140,7 @@
         </div>
       </div>
     </div>
-  
+
     <div
       class="modal fade"
       id="wishesModal"
@@ -152,7 +152,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="wishesModalLabel">
-                Gửi những lời chúc tốt đẹp nhất đến Trần Thị Tâm.
+              Gửi những lời chúc tốt đẹp nhất đến Trần Thị Tâm.
             </h5>
             <button
               type="button"
@@ -231,7 +231,7 @@
 
           // Hàm cuộn tự động bên trong phần tử envelope-content
           function autoScrollEnvelope() {
-            if(isScrolling) return;
+            if (isScrolling) return;
 
             isScrolling = true; // ngăn không cho tự động scrolling lại khi click vào màn hình vì đang nằm trong sự kiện click của envelop
             const scrollSpeed = 1; // Điều chỉnh tốc độ cuộn
@@ -250,8 +250,8 @@
           // Dừng cuộn khi có hành động click hoặc chạm vào màn hình
           function stopScroll() {
             clearInterval(interval);
-             window.removeEventListener("click", stopScroll); // Loại bỏ sự kiện sau khi dừng
-             window.removeEventListener("touchstart", stopScroll); // Đối với thiết bị cảm ứng
+            window.removeEventListener("click", stopScroll); // Loại bỏ sự kiện sau khi dừng
+            window.removeEventListener("touchstart", stopScroll); // Đối với thiết bị cảm ứng
           }
 
           // Lắng nghe sự kiện click và chạm để dừng cuộn
@@ -281,6 +281,15 @@
           }, 10000);
         });
 
+        // Ví dụ gọi hàm để lấy dữ liệu
+        getDataFromSheet().then((data) => {
+          // Xử lý dữ liệu nhận được từ API
+          console.log("Data:", data);
+          data.forEach(element => {
+            addWish(element.Message, element.Sender);
+          });
+        });
+
         giftBox.addEventListener("click", function (event) {
           event.stopPropagation();
           wishesModal.show();
@@ -300,6 +309,7 @@
           const message = document.getElementById("wishMessage").value;
           const sender = document.getElementById("senderName").value;
           addWish(message, sender);
+          addDataToSheet(message, sender);
           wishesModal.hide();
           this.reset();
         });
@@ -309,10 +319,6 @@
         addWish("mừng", "duclba");
         addWish("sinh", "duclba");
         addWish("nhật", "duclba");
-        addWish(
-          "Happy Birthday! Wishing you a day filled with love, laughter, and unforgettable memories. May this year bring you success, joy, and all the happiness you deserve. On your special day, take time to celebrate everything you’ve accomplished and look forward to the amazing things that are yet to come. Here’s to another fantastic year ahead—cheers to you! Enjoy every moment and have a wonderful birthday!",
-          "duclba"
-        );
 
         function addWish(message, sender) {
           const wish = document.createElement("div");
@@ -330,36 +336,40 @@
         }
 
         function createBalloons() {
-                const balloonContainer = document.querySelector('.balloon-container');
-                const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#fdcb6e'];
-                for (let i = 0; i < 20; i++) {
-                    const balloon = document.createElement('div');
-                    balloon.classList.add('balloon');
-                    balloon.style.left = `${Math.random() * 100}%`;
-                    balloon.style.animationDuration = `${Math.random() * 3 + 2}s`;
-                    balloon.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-                    balloonContainer.appendChild(balloon);
-                }
-                setTimeout(() => {
-                    balloonContainer.innerHTML = '';
-                }, 20000);
-            }
+          const balloonContainer = document.querySelector(".balloon-container");
+          const colors = ["#ff6b6b", "#4ecdc4", "#45b7d1", "#fdcb6e"];
+          for (let i = 0; i < 20; i++) {
+            const balloon = document.createElement("div");
+            balloon.classList.add("balloon");
+            balloon.style.left = `${Math.random() * 100}%`;
+            balloon.style.animationDuration = `${Math.random() * 3 + 2}s`;
+            balloon.style.backgroundColor =
+              colors[Math.floor(Math.random() * colors.length)];
+            balloonContainer.appendChild(balloon);
+          }
+          setTimeout(() => {
+            balloonContainer.innerHTML = "";
+          }, 20000);
+        }
 
-            function createFireworks() {
-                const fireworksContainer = document.querySelector('.fireworks-container');
-                const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#fdcb6e'];
-                for (let i = 0; i < 60; i++) {
-                    setTimeout(() => {
-                        const firework = document.createElement('div');
-                        firework.classList.add('firework');
-                        firework.style.left = `${Math.random() * 100}%`;
-                        firework.style.top = `${Math.random() * 100}%`;
-                        firework.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-                        fireworksContainer.appendChild(firework);
-                        setTimeout(() => firework.remove(), 7000);
-                    }, i * 300);
-                }
-            }
+        function createFireworks() {
+          const fireworksContainer = document.querySelector(
+            ".fireworks-container"
+          );
+          const colors = ["#ff6b6b", "#4ecdc4", "#45b7d1", "#fdcb6e"];
+          for (let i = 0; i < 60; i++) {
+            setTimeout(() => {
+              const firework = document.createElement("div");
+              firework.classList.add("firework");
+              firework.style.left = `${Math.random() * 100}%`;
+              firework.style.top = `${Math.random() * 100}%`;
+              firework.style.backgroundColor =
+                colors[Math.floor(Math.random() * colors.length)];
+              fireworksContainer.appendChild(firework);
+              setTimeout(() => firework.remove(), 7000);
+            }, i * 300);
+          }
+        }
       });
 
       // Canvas for cake
@@ -458,5 +468,6 @@
 
       drawCake();
     </script>
+    <script src="index.js" type="text/javascript"></script>
   </body>
 </html>
