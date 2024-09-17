@@ -190,6 +190,10 @@ body {
     z-index: 1;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
     border-radius: 20px;
+    /* max-height: 500px; /* Chiều cao tối đa để có thể cuộn */
+    /* overflow-y: auto; Cho phép cuộn dọc */
+    /* scroll-behavior: smooth; Tạo hiệu ứng cuộn mượt */ 
+
 }
 
 .birthday-card {

@@ -1,198 +1,297 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tâm Birthday</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <link rel="stylesheet" href="index.css" />
+  </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tâm Birthday </title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-    <link rel="stylesheet" href="index.css">
-</head>
-
-<body>
-    <div class="container-fluid min-vh-100 d-flex align-items-center justify-content-center">
-        <div class="envelope light-green">
-            <div class="envelope-clasp heart-shaped"></div>
-            <div class="envelope-ribbon shiny"></div>
-            <div class="envelope-flap top">
-                <p class="flap-text hidden">Chúc</p>
-            </div>
-            <div class="envelope-flap bottom">
-                <p class="flap-text hidden nhat">Nhật</p>
-            </div>
-            <div class="envelope-flap left">
-                <p class="flap-text hidden">Sinh</p>
-            </div>
-            <div class="envelope-flap right">
-                <p class="flap-text hidden mung">Mừng</p>
-            </div>
-            <div class="envelope-content">
-                <div class="birthday-card">
-                    <div class="card-inner">
-                        <div class="row">
-                            <div class="col-12 text-center">
-                                <h1 class="mb-4 animate__animated animate__bounceIn">Happy Birthday, Trần Thị Tâm!</h1>
-                                <p class="lead animate__animated animate__fadeIn animate__delay-1s">Join us for a
-                                    magical celebration!</p>
-                                <p class="animate__animated animate__fadeIn animate__delay-2s"><strong>Date:</strong>
-                                    August 15, 2023</p>
-                                <p class="animate__animated animate__fadeIn animate__delay-2s"><strong>Time:</strong>
-                                    2:00 PM</p>
-                                <p class="animate__animated animate__fadeIn animate__delay-2s"><strong>Venue:</strong>
-                                    Enchanted Gardens</p>
-                            </div>
-                        </div>
-                        <div class="row mt-4">
-                            <div class="col-md-6">
-                                <img src="https://images.unsplash.com/photo-1558636508-e0db3814bd1d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
-                                    alt="Birthday Cake"
-                                    class="img-fluid rounded mb-3 animate__animated animate__zoomIn">
-                            </div>
-                            <div class="col-md-6">
-                                <img src="mom.jpg"
-                                    alt="Party Decorations"
-                                    class="img-fluid mb-3 rounded animate__animated animate__zoomIn animate__delay-1s">
-                            </div>
-                            <div class="col-md-6">
-                                <img src="mom2.jpg"
-                                    alt="Party Decorations"
-                                    class="img-fluid mb-3 rounded animate__animated animate__zoomIn animate__delay-1s">
-                            </div>
-                            <div class="col-md-6">
-                                <img src="mom3.jpg"
-                                    alt="Party Decorations"
-                                    class="img-fluid mb-3 rounded animate__animated animate__zoomIn animate__delay-1s">
-                            </div>
-                             <div class="col-md-6">
-                                <img src="mom4.jpg"
-                                    alt="Party Decorations"
-                                    class="img-fluid mb-3 rounded animate__animated animate__zoomIn animate__delay-1s">
-                            </div>
-                            <div class="col-md-6">
-                                <img src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
-                                    alt="Party Decorations"
-                                    class="img-fluid rounded animate__animated animate__zoomIn animate__delay-1s">
-                            </div>
-                        </div>
-                        <div class="text-center mt-4">
-                            <button
-                                class="btn btn-lg btn-outline-primary gift-box animate__animated animate__pulse animate__infinite"
-                                aria-label="Open gift box">
-                                🎁 Gift Box
-                            </button>
-                        </div>
-                        <div class="wishes-container mt-4" id="wishesContainer"></div>
-                    </div>
-                </div>
-            </div>
+  <body>
+    <div
+      class="container-fluid min-vh-100 d-flex align-items-center justify-content-center"
+    >
+      <div class="envelope light-green">
+        <div class="envelope-clasp heart-shaped"></div>
+        <div class="envelope-ribbon shiny"></div>
+        <div class="envelope-flap top">
+          <p class="flap-text hidden">Chúc</p>
         </div>
+        <div class="envelope-flap bottom">
+          <p class="flap-text hidden nhat">Nhật</p>
+        </div>
+        <div class="envelope-flap left">
+          <p class="flap-text hidden">Sinh</p>
+        </div>
+        <div class="envelope-flap right">
+          <p class="flap-text hidden mung">Mừng</p>
+        </div>
+        <div class="envelope-content">
+          <div class="birthday-card">
+            <div class="card-inner">
+              <div class="row">
+                <div class="col-12 text-center">
+                  <h1 class="mb-4 animate__animated animate__bounceIn">
+                    Happy Birthday, Trần Thị Tâm!
+                  </h1>
+                  <p
+                    class="lead animate__animated animate__fadeIn animate__delay-1s"
+                  >
+                    Join us for a magical celebration!
+                  </p>
+                  <p
+                    class="animate__animated animate__fadeIn animate__delay-2s"
+                  >
+                    <strong>Date:</strong> August 15, 2023
+                  </p>
+                  <p
+                    class="animate__animated animate__fadeIn animate__delay-2s"
+                  >
+                    <strong>Time:</strong> 2:00 PM
+                  </p>
+                  <p
+                    class="animate__animated animate__fadeIn animate__delay-2s"
+                  >
+                    <strong>Venue:</strong> Enchanted Gardens
+                  </p>
+                </div>
+              </div>
+              <div class="row mt-4">
+                <div class="col-md-6">
+                  <img
+                    src="https://images.unsplash.com/photo-1558636508-e0db3814bd1d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                    alt="Birthday Cake"
+                    class="img-fluid rounded mb-3 animate__animated animate__zoomIn"
+                  />
+                </div>
+                <div class="col-md-6">
+                  <img
+                    src="mom.jpg"
+                    alt="Party Decorations"
+                    class="img-fluid mb-3 rounded animate__animated animate__zoomIn animate__delay-1s"
+                  />
+                </div>
+                <div class="col-md-6">
+                  <img
+                    src="mom2.jpg"
+                    alt="Party Decorations"
+                    class="img-fluid mb-3 rounded animate__animated animate__zoomIn animate__delay-1s"
+                  />
+                </div>
+                <div class="col-md-6">
+                  <img
+                    src="mom3.jpg"
+                    alt="Party Decorations"
+                    class="img-fluid mb-3 rounded animate__animated animate__zoomIn animate__delay-1s"
+                  />
+                </div>
+                <div class="col-md-6">
+                  <img
+                    src="mom4.jpg"
+                    alt="Party Decorations"
+                    class="img-fluid mb-3 rounded animate__animated animate__zoomIn animate__delay-1s"
+                  />
+                </div>
+                <div class="col-md-6">
+                  <img
+                    src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                    alt="Party Decorations"
+                    class="img-fluid rounded animate__animated animate__zoomIn animate__delay-1s"
+                  />
+                </div>
+              </div>
+              <div class="text-center mt-4">
+                <button
+                  class="btn btn-lg btn-outline-primary gift-box animate__animated animate__pulse animate__infinite"
+                  aria-label="Open gift box"
+                >
+                  🎁 Gift Box
+                </button>
+              </div>
+              <div class="wishes-container mt-4" id="wishesContainer"></div>
+              <div class="text-center mt-4">
+                <button
+                  class="btn btn-lg btn-outline-primary gift-box animate__animated animate__pulse animate__infinite"
+                  aria-label="Open gift box"
+                >
+                  🎁 Gift Box
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <div class="modal fade" id="wishesModal" tabindex="-1" aria-labelledby="wishesModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="wishesModalLabel">Send your best wishes to your friend</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form id="wishesForm">
-                        <div class="mb-3">
-                            <label for="wishMessage" class="form-label">Your Message:</label>
-                            <textarea class="form-control" id="wishMessage" rows="3" required></textarea>
-                        </div>
-                        <div class="mb-3">
-                            <label for="senderName" class="form-label">Your Name:</label>
-                            <input type="text" class="form-control" id="senderName" required>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Send Wishes</button>
-                    </form>
-                </div>
-            </div>
+    <div
+      class="modal fade"
+      id="wishesModal"
+      tabindex="-1"
+      aria-labelledby="wishesModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="wishesModalLabel">
+              Send your best wishes to your friend
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form id="wishesForm">
+              <div class="mb-3">
+                <label for="wishMessage" class="form-label"
+                  >Your Message:</label
+                >
+                <textarea
+                  class="form-control"
+                  id="wishMessage"
+                  rows="3"
+                  required
+                ></textarea>
+              </div>
+              <div class="mb-3">
+                <label for="senderName" class="form-label">Your Name:</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="senderName"
+                  required
+                />
+              </div>
+              <button type="submit" class="btn btn-primary">Send Wishes</button>
+            </form>
+          </div>
         </div>
+      </div>
     </div>
 
     <audio id="backgroundMusic" loop>
-        <source src="music.mp3" type="audio/mpeg">
+      <source src="music.mp3" type="audio/mpeg" />
     </audio>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const envelope = document.querySelector('.envelope');
-            const clasp = document.querySelector('.envelope-clasp');
-            const ribbon = document.querySelector('.envelope-ribbon');
-            const flaps = document.querySelectorAll('.envelope-flap');
-            const flapsH1 = document.querySelectorAll('.flap-text');
-            const card = document.querySelector('.birthday-card');
-            const giftBox = document.querySelector('.gift-box');
-            const wishesModal = new bootstrap.Modal(document.getElementById('wishesModal'));
-            const wishesForm = document.getElementById('wishesForm');
-            const wishesContainer = document.querySelector('.wishes-container');
-            const backgroundMusic = document.getElementById('backgroundMusic');
+      document.addEventListener("DOMContentLoaded", function () {
+        const envelope = document.querySelector(".envelope");
+        const clasp = document.querySelector(".envelope-clasp");
+        const ribbon = document.querySelector(".envelope-ribbon");
+        const flaps = document.querySelectorAll(".envelope-flap");
+        const flapsH1 = document.querySelectorAll(".flap-text");
+        const card = document.querySelector(".birthday-card");
+        const giftBox = document.querySelector(".gift-box");
+        const wishesModal = new bootstrap.Modal(
+          document.getElementById("wishesModal")
+        );
+        const wishesForm = document.getElementById("wishesForm");
+        const wishesContainer = document.querySelector(".wishes-container");
+        const backgroundMusic = document.getElementById("backgroundMusic");
 
-            envelope.addEventListener('click', function () {
-                clasp.style.animation = 'unlockClasp 2s forwards';
-                ribbon.style.animation = 'untieRibbon 2s forwards';
-                backgroundMusic.play();
-                flapsH1.forEach(flap => {
-                    flap.classList.add('showText');
-                });
+        envelope.addEventListener("click", function () {
+          clasp.style.animation = "unlockClasp 2s forwards";
+          ribbon.style.animation = "untieRibbon 2s forwards";
+          backgroundMusic.play();
+          flapsH1.forEach((flap) => {
+            flap.classList.add("showText");
+          });
 
-                flaps.forEach(flap => {
-                    flap.style.animation = 'openFlap 5.5s forwards';
-                });
-                setTimeout(() => {
-                    clasp.classList.add('hidden');
-                    ribbon.classList.add('hidden');
-                    flaps.forEach(flap => {
-                        flap.classList.add('hidden');
-                    });
-                    card.style.animation = 'growCard 5.5s forwards';
-                    // backgroundMusic.play();
-                }, 5500);
+          flaps.forEach((flap) => {
+            flap.style.animation = "openFlap 5.5s forwards";
+          });
+
+          const envelopeContent = document.querySelector(".card-inner");
+
+          // Hàm cuộn tự động bên trong phần tử envelope-content
+          function autoScrollEnvelope() {
+            const scrollSpeed = 1; // Điều chỉnh tốc độ cuộn
+            const maxScroll =
+              envelopeContent.scrollHeight - envelopeContent.clientHeight;
+
+            const interval = setInterval(() => {
+              if (envelopeContent.scrollTop < maxScroll) {
+                envelopeContent.scrollBy(0, scrollSpeed); // Cuộn từ từ theo từng pixel
+              } else {
+                clearInterval(interval); // Dừng cuộn khi đến cuối phần tử
+              }
+            }, 30); // Tần số cuộn (16ms ~ 60fps)
+          }
+
+          setTimeout(() => {
+            clasp.classList.add("hidden");
+            ribbon.classList.add("hidden");
+            flaps.forEach((flap) => {
+              flap.classList.add("hidden");
             });
+            card.style.animation = "growCard 5.5s forwards";
+            // backgroundMusic.play();
+            // Sau khi mở phong bì xong, tự động cuộn đến nút "Gift Box"
+            // giftBox.scrollIntoView({ behavior: "smooth", block: "center" });
+            // Gọi hàm cuộn tự động khi phần tử được tải
+            //   autoScrollEnvelope();
+          }, 5500);
 
-            giftBox.addEventListener('click', function (event) {
-                event.stopPropagation();
-                wishesModal.show();
-                const message = document.getElementById('wishMessage');
-                message.focus();
-            });
+          setTimeout(() => {
+            clasp.classList.add("hidden");
+            // Gọi hàm cuộn tự động khi phần tử được tải
+            autoScrollEnvelope();
+          }, 7700);
+        });
 
-            wishesForm.addEventListener('submit', function (event) {
-                event.preventDefault();
-                const message = document.getElementById('wishMessage').value;
-                const sender = document.getElementById('senderName').value;
-                addWish(message, sender);
-                wishesModal.hide();
-                this.reset();
-            });
+        giftBox.addEventListener("click", function (event) {
+          event.stopPropagation();
+          wishesModal.show();
+          const message = document.getElementById("wishMessage");
+          message.focus();
+        });
 
-            // Thêm các wishes mẫu sau khi DOM đã load
-            addWish("chúc", "duclba");
-            addWish("mừng", "duclba");
-            addWish("sinh", "duclba");
-            addWish("nhật", "duclba");
-            addWish("Happy Birthday! Wishing you a day filled with love, laughter, and unforgettable memories. May this year bring you success, joy, and all the happiness you deserve. On your special day, take time to celebrate everything you’ve accomplished and look forward to the amazing things that are yet to come. Here’s to another fantastic year ahead—cheers to you! Enjoy every moment and have a wonderful birthday!", "duclba");
+        wishesForm.addEventListener("submit", function (event) {
+          event.preventDefault();
+          const message = document.getElementById("wishMessage").value;
+          const sender = document.getElementById("senderName").value;
+          addWish(message, sender);
+          wishesModal.hide();
+          this.reset();
+        });
 
-            function addWish(message, sender) {
-                const wish = document.createElement('div');
-                wish.classList.add('wish', 'animate__animated', 'animate__fadeIn');
-                const randomColorWish = `hsl(${Math.random() * 360}, 100%, 75%)`;
-                wish.style.backgroundColor = randomColorWish;
+        // Thêm các wishes mẫu sau khi DOM đã load
+        addWish("chúc", "duclba");
+        addWish("mừng", "duclba");
+        addWish("sinh", "duclba");
+        addWish("nhật", "duclba");
+        addWish(
+          "Happy Birthday! Wishing you a day filled with love, laughter, and unforgettable memories. May this year bring you success, joy, and all the happiness you deserve. On your special day, take time to celebrate everything you’ve accomplished and look forward to the amazing things that are yet to come. Here’s to another fantastic year ahead—cheers to you! Enjoy every moment and have a wonderful birthday!",
+          "duclba"
+        );
 
-                const randomColor = `hsl(${Math.random() * 360}, 100%, 75%)`;
-                wish.innerHTML = `
+        function addWish(message, sender) {
+          const wish = document.createElement("div");
+          wish.classList.add("wish", "animate__animated", "animate__fadeIn");
+          const randomColorWish = `hsl(${Math.random() * 360}, 100%, 75%)`;
+          wish.style.backgroundColor = randomColorWish;
+
+          const randomColor = `hsl(${Math.random() * 360}, 100%, 75%)`;
+          wish.innerHTML = `
                     <div class="wish-pin" style="background-color: ${randomColor};"></div>
                     <p>${message}</p>
                     <p class="sender">- ${sender}</p>
                 `;
-                wishesContainer.appendChild(wish);
-            }
-        });
+          wishesContainer.appendChild(wish);
+        }
+      });
     </script>
-</body>
-
+  </body>
 </html>
