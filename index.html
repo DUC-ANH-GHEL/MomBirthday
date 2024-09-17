@@ -348,7 +348,7 @@
             function createFireworks() {
                 const fireworksContainer = document.querySelector('.fireworks-container');
                 const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#fdcb6e'];
-                for (let i = 0; i < 10; i++) {
+                for (let i = 0; i < 60; i++) {
                     setTimeout(() => {
                         const firework = document.createElement('div');
                         firework.classList.add('firework');
@@ -356,7 +356,7 @@
                         firework.style.top = `${Math.random() * 100}%`;
                         firework.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
                         fireworksContainer.appendChild(firework);
-                        setTimeout(() => firework.remove(), 1000);
+                        setTimeout(() => firework.remove(), 7000);
                     }, i * 300);
                 }
             }
