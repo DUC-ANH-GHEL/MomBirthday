@@ -42,6 +42,16 @@
                   <h1 class="mb-4 animate__animated animate__bounceIn">
                     Happy Birthday, Trần Thị Tâm!
                   </h1>
+                  <div class="cake-container mb-4">
+                    <canvas id="cakeCanvas" width="300" height="300"></canvas>
+                    <div class="candles">
+                      <div class="candle"><div class="flame"></div></div>
+                      <div class="candle"><div class="flame"></div></div>
+                      <div class="candle"><div class="flame"></div></div>
+                    </div>
+                  </div>
+                  <div class="balloon-container"></div>
+                  <div class="fireworks-container"></div>
                   <p
                     class="lead animate__animated animate__fadeIn animate__delay-1s"
                   >
@@ -130,7 +140,7 @@
         </div>
       </div>
     </div>
-
+  
     <div
       class="modal fade"
       id="wishesModal"
@@ -224,7 +234,7 @@
             const maxScroll =
               envelopeContent.scrollHeight - envelopeContent.clientHeight;
 
-             interval = setInterval(() => {
+            interval = setInterval(() => {
               if (envelopeContent.scrollTop < maxScroll) {
                 envelopeContent.scrollBy(0, scrollSpeed); // Cuộn từ từ theo từng pixel
               } else {
@@ -256,6 +266,8 @@
             // giftBox.scrollIntoView({ behavior: "smooth", block: "center" });
             // Gọi hàm cuộn tự động khi phần tử được tải
             //   autoScrollEnvelope();
+            createBalloons();
+            createFireworks();
           }, 5500);
 
           setTimeout(() => {
@@ -272,14 +284,12 @@
           message.focus();
         });
 
-        
         giftBox2.addEventListener("click", function (event) {
           event.stopPropagation();
           wishesModal.show();
           const message = document.getElementById("wishMessage");
           message.focus();
         });
-
 
         wishesForm.addEventListener("submit", function (event) {
           event.preventDefault();
@@ -314,7 +324,135 @@
                 `;
           wishesContainer.appendChild(wish);
         }
+
+        function createBalloons() {
+                const balloonContainer = document.querySelector('.balloon-container');
+                const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#fdcb6e'];
+                for (let i = 0; i < 20; i++) {
+                    const balloon = document.createElement('div');
+                    balloon.classList.add('balloon');
+                    balloon.style.left = `${Math.random() * 100}%`;
+                    balloon.style.animationDuration = `${Math.random() * 3 + 2}s`;
+                    balloon.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                    balloonContainer.appendChild(balloon);
+                }
+                setTimeout(() => {
+                    balloonContainer.innerHTML = '';
+                }, 20000);
+            }
+
+            function createFireworks() {
+                const fireworksContainer = document.querySelector('.fireworks-container');
+                const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#fdcb6e'];
+                for (let i = 0; i < 10; i++) {
+                    setTimeout(() => {
+                        const firework = document.createElement('div');
+                        firework.classList.add('firework');
+                        firework.style.left = `${Math.random() * 100}%`;
+                        firework.style.top = `${Math.random() * 100}%`;
+                        firework.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                        fireworksContainer.appendChild(firework);
+                        setTimeout(() => firework.remove(), 1000);
+                    }, i * 300);
+                }
+            }
       });
+
+      // Canvas for cake
+      const cakeCanvas = document.getElementById("cakeCanvas");
+      const ctx = cakeCanvas.getContext("2d");
+
+      function drawCake() {
+        // Base
+        ctx.fillStyle = "#FFD700";
+        ctx.beginPath();
+        ctx.ellipse(150, 250, 120, 40, 0, 0, 2 * Math.PI);
+        ctx.fill();
+
+        // Layers
+        const layers = [
+          { y: 200, color: "#FF69B4", pattern: "dots" },
+          { y: 150, color: "#87CEFA", pattern: "stripes" },
+          { y: 100, color: "#98FB98", pattern: "swirls" },
+        ];
+
+        layers.forEach((layer) => {
+          ctx.fillStyle = layer.color;
+          ctx.beginPath();
+          ctx.ellipse(150, layer.y, 100, 30, 0, 0, 2 * Math.PI);
+          ctx.fill();
+
+          // Add patterns
+          ctx.save();
+          ctx.clip();
+          switch (layer.pattern) {
+            case "dots":
+              for (let i = 0; i < 50; i++) {
+                ctx.fillStyle = "rgba(255,255,255,0.5)";
+                ctx.beginPath();
+                ctx.arc(
+                  Math.random() * 300,
+                  layer.y + Math.random() * 60 - 30,
+                  2,
+                  0,
+                  2 * Math.PI
+                );
+                ctx.fill();
+              }
+              break;
+            case "stripes":
+              ctx.strokeStyle = "rgba(255,255,255,0.5)";
+              ctx.lineWidth = 2;
+              for (let i = 0; i < 10; i++) {
+                ctx.beginPath();
+                ctx.moveTo(0, layer.y + i * 6 - 30);
+                ctx.lineTo(300, layer.y + i * 6 - 30);
+                ctx.stroke();
+              }
+              break;
+            case "swirls":
+              ctx.strokeStyle = "rgba(255,255,255,0.5)";
+              ctx.lineWidth = 2;
+              for (let i = 0; i < 5; i++) {
+                ctx.beginPath();
+                ctx.arc(150 + i * 20, layer.y, 10 + i * 5, 0, 2 * Math.PI);
+                ctx.stroke();
+              }
+              break;
+          }
+          ctx.restore();
+        });
+
+        // Fruit toppings
+        const fruits = [
+          { x: 100, y: 80, color: "#FF0000", size: 10 }, // Cherry
+          { x: 200, y: 90, color: "#FFA500", size: 15 }, // Orange slice
+          { x: 150, y: 70, color: "#8B4513", size: 12 }, // Chocolate piece
+        ];
+
+        fruits.forEach((fruit) => {
+          ctx.fillStyle = fruit.color;
+          ctx.beginPath();
+          ctx.arc(fruit.x, fruit.y, fruit.size, 0, 2 * Math.PI);
+          ctx.fill();
+        });
+
+        // Sprinkles
+        for (let i = 0; i < 100; i++) {
+          ctx.fillStyle = [
+            "#FF0000",
+            "#00FF00",
+            "#0000FF",
+            "#FFFF00",
+            "#FF00FF",
+          ][Math.floor(Math.random() * 5)];
+          ctx.beginPath();
+          ctx.rect(Math.random() * 300, Math.random() * 200 + 50, 2, 6);
+          ctx.fill();
+        }
+      }
+
+      drawCake();
     </script>
   </body>
 </html>
