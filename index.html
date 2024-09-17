@@ -119,7 +119,7 @@
               <div class="wishes-container mt-4" id="wishesContainer"></div>
               <div class="text-center mt-4">
                 <button
-                  class="btn btn-lg btn-outline-primary gift-box animate__animated animate__pulse animate__infinite"
+                  class="btn btn-lg btn-outline-primary gift-box2 animate__animated animate__pulse animate__infinite"
                   aria-label="Open gift box"
                 >
                   🎁 Gift Box
@@ -194,12 +194,15 @@
         const flapsH1 = document.querySelectorAll(".flap-text");
         const card = document.querySelector(".birthday-card");
         const giftBox = document.querySelector(".gift-box");
+        const giftBox2 = document.querySelector(".gift-box2");
         const wishesModal = new bootstrap.Modal(
           document.getElementById("wishesModal")
         );
         const wishesForm = document.getElementById("wishesForm");
         const wishesContainer = document.querySelector(".wishes-container");
         const backgroundMusic = document.getElementById("backgroundMusic");
+
+        let interval; // Khai báo biến interval ở đây để có thể dừng trong hàm khác
 
         envelope.addEventListener("click", function () {
           clasp.style.animation = "unlockClasp 2s forwards";
@@ -221,7 +224,7 @@
             const maxScroll =
               envelopeContent.scrollHeight - envelopeContent.clientHeight;
 
-            const interval = setInterval(() => {
+             interval = setInterval(() => {
               if (envelopeContent.scrollTop < maxScroll) {
                 envelopeContent.scrollBy(0, scrollSpeed); // Cuộn từ từ theo từng pixel
               } else {
@@ -229,6 +232,17 @@
               }
             }, 30); // Tần số cuộn (16ms ~ 60fps)
           }
+
+          // Dừng cuộn khi có hành động click hoặc chạm vào màn hình
+          function stopScroll() {
+            clearInterval(interval);
+            window.removeEventListener("click", stopScroll); // Loại bỏ sự kiện sau khi dừng
+            window.removeEventListener("touchstart", stopScroll); // Đối với thiết bị cảm ứng
+          }
+
+          // Lắng nghe sự kiện click và chạm để dừng cuộn
+          window.addEventListener("click", stopScroll);
+          window.addEventListener("touchstart", stopScroll);
 
           setTimeout(() => {
             clasp.classList.add("hidden");
@@ -257,6 +271,15 @@
           const message = document.getElementById("wishMessage");
           message.focus();
         });
+
+        
+        giftBox2.addEventListener("click", function (event) {
+          event.stopPropagation();
+          wishesModal.show();
+          const message = document.getElementById("wishMessage");
+          message.focus();
+        });
+
 
         wishesForm.addEventListener("submit", function (event) {
           event.preventDefault();
