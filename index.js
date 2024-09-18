@@ -24,7 +24,7 @@ async function addDataToSheet(message, sender) {
     }
 
     const result = await response.json();
-    console.log('Data added successfully:', result);
+    // console.log('Data added successfully:', result);
   } catch (error) {
     console.error('Error adding data:', error);
   }
@@ -47,7 +47,7 @@ async function getDataFromSheet() {
       }
   
       const data = await response.json();
-      console.log('Data retrieved successfully:', data);
+    //   console.log('Data retrieved successfully:', data);
   
       return data; // Trả về dữ liệu để sử dụng sau
     } catch (error) {
