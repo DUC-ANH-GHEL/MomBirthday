@@ -55,4 +55,21 @@ async function getDataFromSheet() {
     }
   }
   
-  
+  // Fetch data from the API
+  fetch('https://sheetdb.io/api/v1/v6eo0ovgiocf4')
+      .then(response => response.json())
+      .then(data => {
+          // Loop through the data and update the like counts
+          data.forEach(item => {
+              const id = item.id;
+              const quantity = item.Quantity;
+              const element = document.querySelector(`.tym-${id}`);
+              if (element) {
+                  element.textContent = quantity;
+              }
+          });
+      })
+      .catch(error => console.error('Error fetching data:', error));
+
+
+      

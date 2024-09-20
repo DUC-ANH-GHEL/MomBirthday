@@ -486,3 +486,53 @@ strong {
     }
 }
 
+/* react typm */
+.position-relative {
+    position: relative;
+  }
+  
+  .like-container {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    display: flex;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 5px 10px;
+    border-radius: 20px;
+  }
+  
+  .heart-icon {
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: red;
+    margin-right: 5px;
+    transition: transform 0.2s;
+  }
+  
+  .heart-icon:hover {
+    transform: scale(1.2);
+  }
+  
+  .like-count {
+    font-size: 1rem;
+  }
+
+  /* Định dạng trái tim hiển thị ở giữa ảnh */
+.heart-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 100px;
+    color: red;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    pointer-events: none;
+  }
+  
+  /* Hiệu ứng cho trái tim khi hiện ra */
+  .heart-show {
+    opacity: 1;
+  }
+  
