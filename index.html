@@ -539,7 +539,11 @@
 
           // Xử lý sự kiện nhấn chuột
           likeContainer.addEventListener("click", () => {
+            count = parseInt(likeCount.textContent, 10);
+          console.log("count",count);
+
             count += 1;
+
             likeCount.textContent = count;
             showHeart(); // Hiện trái tim hoạt hình
 
@@ -568,11 +572,6 @@
               .catch((error) =>
                 console.error("Lỗi khi cập nhật dữ liệu:", error)
               );
-
-            updates.push({
-              query: `id=${id}`,
-              Quantity: count, // Cập nhật giá trị số lượng
-            });
           });
         });
       });
