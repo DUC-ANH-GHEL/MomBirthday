@@ -18,6 +18,7 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
     />
     <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="capture.css" />
   </head>
 
   <body>
@@ -174,12 +175,17 @@
                 </button>
               </div>
              
-              <div>
-                <video id="video" width="320" height="240" autoplay></video>
-                <button id="capture-btn">Chụp ảnh</button>
-                <canvas id="canvas" width="320" height="240" style="display: none;"></canvas>
-                <img id="captured-image" alt="Ảnh đã chụp" style="display: none;" />
-                <button id="confirm-btn" style="display: none;">Xác nhận ảnh</button>
+              <div class="container-fluid vh-100 d-flex flex-column justify-content-center align-items-center">
+                <h1 class="mb-4">Photo Capture</h1>
+                <div class="position-relative">
+                    <video id="video" class="rounded shadow-lg" autoplay></video>
+                    <button id="captureBtn" class="btn btn-primary btn-lg position-absolute bottom-0 start-50 translate-middle-x mb-3">Capture Photo</button>
+                </div>
+                <div id="capturedImageContainer" class="mt-4 d-none">
+                    <img id="capturedImage" class="img-fluid rounded shadow-lg mb-3" alt="Captured photo">
+                    <a id="downloadLink" class="btn btn-success" download="captured_photo.png">Download Photo</a>
+                </div>
+                <div id="errorMessage" class="alert alert-danger mt-3 d-none" role="alert"></div>
             </div>
             
 
