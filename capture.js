@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const video = document.getElementById("video");
     const canvas = document.getElementById("canvas");
     const captureBtn = document.getElementById("capture-btn");
+    const confirmBtn = document.getElementById("confirm-btn");
     const capturedImage = document.getElementById("captured-image");
 
     // Yêu cầu truy cập vào camera trước
@@ -16,15 +17,27 @@ document.addEventListener("DOMContentLoaded", function () {
         console.error("Lỗi khi truy cập camera: ", err);
     });
 
-    // Hàm chụp ảnh khi nhấn nút "Chụp ảnh"
+    // Khi người dùng nhấn nút "Chụp ảnh"
     captureBtn.addEventListener("click", function () {
+        // Ẩn nút chụp ảnh và hiển thị nút xác nhận
+        captureBtn.style.display = "none";
+        confirmBtn.style.display = "block";
+    });
+
+    // Khi người dùng nhấn nút "Xác nhận ảnh"
+    confirmBtn.addEventListener("click", function () {
         const context = canvas.getContext("2d");
-        // Vẽ video lên canvas
+        // Vẽ video lên canvas để chụp ảnh
         context.drawImage(video, 0, 0, canvas.width, canvas.height);
-        // Hiển thị ảnh chụp được
         const dataURL = canvas.toDataURL("image/png");
+        
+        // Hiển thị ảnh chụp được và ẩn canvas
         capturedImage.src = dataURL;
         capturedImage.style.display = "block";
-        canvas.style.display = "none"; // Ẩn canvas nếu không cần thiết
+        canvas.style.display = "none";
+        
+        // Ẩn video stream sau khi chụp
+        video.style.display = "none";
+        confirmBtn.style.display = "none"; // Ẩn nút xác nhận
     });
 });
