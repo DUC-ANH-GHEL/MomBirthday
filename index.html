@@ -82,7 +82,7 @@
               <div class="row mt-4">
                 <div class="col-md-6 position-relative">
                   <div class="image-container">
-                    <img
+                    <img id="img-1"
                       src="https://images.unsplash.com/photo-1558636508-e0db3814bd1d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
                       alt="Birthday Cake"
                       class="img-fluid rounded mb-3 animate__animated animate__zoomIn"
@@ -263,6 +263,7 @@
 
         let interval; // Khai báo biến interval ở đây để có thể dừng trong hàm khác
         let isScrolling = false;
+        let isCallingData = false;
 
         envelope.addEventListener("click", function () {
           clasp.style.animation = "unlockClasp 2s forwards";
@@ -314,11 +315,7 @@
               flap.classList.add("hidden");
             });
             card.style.animation = "growCard 5.5s forwards";
-            // backgroundMusic.play();
-            // Sau khi mở phong bì xong, tự động cuộn đến nút "Gift Box"
-            // giftBox.scrollIntoView({ behavior: "smooth", block: "center" });
-            // Gọi hàm cuộn tự động khi phần tử được tải
-            //   autoScrollEnvelope();
+           
             createBalloons();
             createFireworks();
           }, 5500);
@@ -328,15 +325,22 @@
             // Gọi hàm cuộn tự động khi phần tử được tải
             autoScrollEnvelope();
           }, 10000);
-        });
 
-        // Ví dụ gọi hàm để lấy dữ liệu
-        getDataFromSheet().then((data) => {
-          // Xử lý dữ liệu nhận được từ API
-          //   console.log("Data:", data);
-          data.forEach((element) => {
-            addWish(element.Message, element.Sender);
-          });
+          if (!isCallingData) {
+            // call api get wish
+            getDataFromSheet().then((data) => {
+              // Xử lý dữ liệu nhận được từ API
+              // console.log("Data:", data);
+              data.forEach((element) => {
+                addWish(element.Message, element.Sender);
+              });
+            });
+
+            // call api get quantity react
+            getQuantityReact();
+
+            isCallingData = true;
+          }
         });
 
         giftBox.addEventListener("click", function (event) {
@@ -534,13 +538,13 @@
             heartOverlay.classList.add("heart-show");
             setTimeout(() => {
               heartOverlay.classList.remove("heart-show");
-            }, 800); // Hiện trong 3 giây
+            }, 1000); // Hiện trong 1 giây
           }
 
           // Xử lý sự kiện nhấn chuột
           likeContainer.addEventListener("click", () => {
             count = parseInt(likeCount.textContent, 10);
-          console.log("count",count);
+            console.log("count", count);
 
             count += 1;
 
@@ -554,24 +558,8 @@
             // Cập nhật số lượng like trên giao diện
             likeCount.textContent = quantity;
 
-            // // Gửi số lượng cập nhật đến API
-            fetch(`https://sheetdb.io/api/v1/v6eo0ovgiocf4/id/${id}`, {
-              method: "PATCH",
-              headers: {
-                Accept: "application/json",
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify({
-                data: {
-                  Quantity: quantity, // Cập nhật giá trị số lượng
-                },
-              }),
-            })
-              .then((response) => response.json())
-              .then((data) => console.log("Cập nhật thành công:", data))
-              .catch((error) =>
-                console.error("Lỗi khi cập nhật dữ liệu:", error)
-              );
+            // Gửi số lượng cập nhật đến API
+            updateQuantityReact(id, quantity);
           });
         });
       });

@@ -1,32 +1,33 @@
 // URL của API SheetDB
-const apiUrl = 'https://sheetdb.io/api/v1/x2w4k07xdsgsl';
+const apiWishUrl = "https://sheetdb.io/api/v1/x2w4k07xdsgsl";
+const apiTymUrl = "https://sheetdb.io/api/v1/ktndfiejvr1bo";
 
 // Hàm gửi dữ liệu đến API
 async function addDataToSheet(message, sender) {
   // Tạo dữ liệu cần gửi
   const newData = {
-    "Message": message,
-    "Sender": sender,
-    "IsActive": true
+    Message: message,
+    Sender: sender,
+    IsActive: true,
   };
 
   try {
-    const response = await fetch(apiUrl, {
-      method: 'POST',
+    const response = await fetch(apiWishUrl, {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json'
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify(newData)
+      body: JSON.stringify(newData),
     });
 
     if (!response.ok) {
-      throw new Error('Network response was not ok ' + response.statusText);
+      throw new Error("Network response was not ok " + response.statusText);
     }
 
     const result = await response.json();
     // console.log('Data added successfully:', result);
   } catch (error) {
-    console.error('Error adding data:', error);
+    console.error("Error adding data:", error);
   }
 }
 
@@ -36,40 +37,56 @@ async function addDataToSheet(message, sender) {
 
 // addDataToSheet(exampleMessage, exampleSender);
 
-
 // Hàm lấy dữ liệu từ API
 async function getDataFromSheet() {
-    try {
-      const response = await fetch(apiUrl);
-      
-      if (!response.ok) {
-        throw new Error('Network response was not ok ' + response.statusText);
-      }
-  
-      const data = await response.json();
-    //   console.log('Data retrieved successfully:', data);
-  
-      return data; // Trả về dữ liệu để sử dụng sau
-    } catch (error) {
-      console.error('Error retrieving data:', error);
+  try {
+    const response = await fetch(apiWishUrl);
+
+    if (!response.ok) {
+      throw new Error("Network response was not ok " + response.statusText);
     }
+
+    const data = await response.json();
+    //   console.log('Data retrieved successfully:', data);
+
+    return data; // Trả về dữ liệu để sử dụng sau
+  } catch (error) {
+    console.error("Error retrieving data:", error);
   }
-  
-  // Fetch data from the API
-  fetch('https://sheetdb.io/api/v1/v6eo0ovgiocf4')
-      .then(response => response.json())
-      .then(data => {
-          // Loop through the data and update the like counts
-          data.forEach(item => {
-              const id = item.id;
-              const quantity = item.Quantity;
-              const element = document.querySelector(`.tym-${id}`);
-              if (element) {
-                  element.textContent = quantity;
-              }
-          });
-      })
-      .catch(error => console.error('Error fetching data:', error));
+}
 
+// Fetch data Tym from the API
+async function getQuantityReact() {
+  fetch(apiTymUrl)
+    .then((response) => response.json())
+    .then((data) => {
+      // Loop through the data and update the like counts
+      data.forEach((item) => {
+        const id = item.id;
+        const quantity = item.Quantity;
+        const element = document.querySelector(`.tym-${id}`);
+        if (element) {
+          element.textContent = quantity;
+        }
+      });
+    })
+    .catch((error) => console.error("Error fetching data:", error));
+}
 
-      
+async function updateQuantityReact(id, quantity) {
+  fetch(`${apiTymUrl}/id/${id}`, {
+    method: "PATCH",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      data: {
+        Quantity: quantity, // Cập nhật giá trị số lượng
+      },
+    }),
+  })
+    .then((response) => response.json())
+    .then((data) => console.log("Cập nhật thành công:", data))
+    .catch((error) => console.error("Lỗi khi cập nhật dữ liệu:", error));
+}
