@@ -229,6 +229,15 @@ body {
     box-shadow: 0 0 15px rgba(255, 107, 107, 0.5);
 }
 
+.gift-box2 {
+    transition: transform 0.3s ease;
+    background: linear-gradient(to right, #00FF87, #60EFFF);
+    border: none;
+    color: white;
+    font-weight: bold;
+    box-shadow: 0 0 15px rgba(255, 107, 107, 0.5);
+}
+
 .gift-box:hover {
     transform: scale(1.05);
     box-shadow: 0 0 20px rgba(255, 107, 107, 0.8);
