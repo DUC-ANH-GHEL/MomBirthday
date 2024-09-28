@@ -4,6 +4,9 @@ body {
     overflow: hidden;
 }
 
+.btn-send-wish{
+    background: linear-gradient(45deg,#5cc3ee 0,#5d91ef 29%,#5e5ef0 50%,#947be1 73%,#ca97d2 100%);
+}
 .envelope {
     width: 90%;
     max-width: 800px;
@@ -81,8 +84,8 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 60%;
-    height: 20%;
+    width: 50%;
+    height: 50%;
     background-color: #FF69B4;
     z-index: 3;
     box-shadow: 0 0 10px rgba(255, 105, 180, 0.5);
@@ -323,18 +326,14 @@ h1 {
 }
 
 .chuc{
-    margin-top: -14%;
-    margin-left: 14%;
-}
-
-.mung{
-    margin-left: 5px;
-    margin-top: 215%;
+    margin-top: -15%;
+    margin-left: 34%;
+    transform: rotate(-90deg);
 }
 
 .nhat{
-    margin-top: 5%;
-    margin-left: -40%;
+    margin-top: -28%;
+    margin-left: 10%;
 }
 
 .lead {
@@ -349,11 +348,76 @@ strong {
 }
 
 @media (max-width: 768px) {
+    .envelope-ribbon {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 60%;
+        height: 20%;
+        background-color: #FF69B4;
+        z-index: 3;
+        box-shadow: 0 0 10px rgba(255, 105, 180, 0.5);
+        border-radius: 10%;
+    }
+
     .envelope {
         aspect-ratio: auto;
         height: 80vh;
     }
+
+    .chuc{
+        margin-top: -14%;
+        margin-left: 14%;
+    }
+    
+    .mung{
+        margin-left: 5px;
+        margin-top: 215%;
+    }
+    
+    .nhat{
+        margin-top: 5%;
+        margin-left: -40%;
+    }
 }
+
+/* Responsive cho màn hình máy tính bảng (từ 769px đến 790px) */
+@media (min-width: 768px) and (max-width: 790px) {
+    .chuc{
+        margin-top: -14%;
+        margin-left: 14%;
+    }
+    
+    .mung{
+        margin-left: 10px;
+        margin-top: 180%;
+    }
+    
+    .nhat{
+        margin-top: -28%;
+        margin-left: -238px;
+    }
+}
+
+/* Responsive cho iPad Air (820px) */
+@media (min-width: 800px) and (max-width: 840px) {
+    .chuc {
+        margin-top: -11%; /* Điều chỉnh giá trị phù hợp với iPad Air */
+        margin-left: 12%;
+    }
+    .mung {
+        margin-left: 3px;
+        margin-top: 140%;
+    }
+    .nhat {
+        margin-top: 3%;
+        margin-left: -25%;
+    }
+}
+
+
+
 
 
 @keyframes flicker {
@@ -503,7 +567,7 @@ strong {
   .like-container {
     position: absolute;
     bottom: 10px;
-    right: 10px;
+    right: 1px;
     display: flex;
     align-items: center;
     background-color: rgba(255, 255, 255, 0.8);
