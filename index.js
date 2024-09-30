@@ -1,6 +1,8 @@
 // URL của API SheetDB
 const apiWishUrl = "https://sheetdb.io/api/v1/x2w4k07xdsgsl";
+const apiCreateWishUrl = "https://sheetdb.io/api/v1/xayx746wp9lyt";
 const apiTymUrl = "https://sheetdb.io/api/v1/ktndfiejvr1bo";
+const apiCreateTymUrl = "https://sheetdb.io/api/v1/uw3ueo1nl9wck";
 
 // Hàm gửi dữ liệu đến API
 async function addDataToSheet(message, sender) {
@@ -12,7 +14,7 @@ async function addDataToSheet(message, sender) {
   };
 
   try {
-    const response = await fetch(apiWishUrl, {
+    const response = await fetch(apiCreateWishUrl, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -74,7 +76,7 @@ async function getQuantityReact() {
 }
 
 async function updateQuantityReact(id, quantity) {
-  fetch(`${apiTymUrl}/id/${id}`, {
+  fetch(`${apiCreateTymUrl}/id/${id}`, {
     method: "PATCH",
     headers: {
       Accept: "application/json",
