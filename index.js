@@ -10,7 +10,7 @@ async function addDataToSheet(message, sender) {
   const newData = {
     Message: message,
     Sender: sender,
-    IsActive: false,
+    IsActive: "FALSE",
   };
 
   try {
