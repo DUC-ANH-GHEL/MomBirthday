@@ -374,7 +374,9 @@
               // Xử lý dữ liệu nhận được từ API
               // console.log("Data:", data);
               data.forEach((element) => {
-                addWish(element.Message, element.Sender);
+                if(element.IsActive){
+                  addWish(element.Message, element.Sender);
+                }
               });
             });
 
